@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="row">
+   <div class="col-sm-6"><h4>Address</h4></div>
+   <div class="col-sm-6">
+      <div class="card mb-4 mt-4 ">
+         <div class="card-header"><h4>Contact Us</h4></div>
+         <div class="card-body">
+            <form action="/contact/" method="POST">{% csrf_token %}
+               <div class="mb-3">
+                 <label for="name" class="form-label">Name</label>
+                 <input type="text" class="form-control" name="name" placeholder="Your Name" class="validate">
+               </div>
+               <div class="mb-3">
+                 <label for="email" class="form-label">Email address</label>
+                 <input type="email" class="form-control" name="email" placeholder="name@example.com" class="validate">
+               </div>
+               <div class="mb-3">
+                 <label for="phone" class="form-label">Conact No.</label>
+                 <input type="tel" class="form-control" name="phone" placeholder="Your Contact No." class="validate">
+               </div>
+               <div class="mb-3">
+                 <div class="mb-3">
+                   <label for="message" class="form-label">Message</label>
+                   <textarea class="form-control" name="message" rows="3" placeholder="Your Message"></textarea>
+                 </div>
+                 <div class="mb-3">
+                   <button type="submit" class="btn btn-primary">Send</button>
+                 </div>
+             </form>
+         </div>
+       </div>
+   </div>
+   <!-- Message -->
+ {% if messages %}
+ {% for message in messages %}
+ <strong {%  if message.tags %} class="{{message.tags}} text-warning" {% endif %} > {{message}}</strong>
+ {%  endfor%}
+ {%  endif %}
+</div>
+
+
+{% endblock %}

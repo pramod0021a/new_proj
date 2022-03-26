@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<!-- Message -->
+
+<h5>Welcome {{name}}, 
+   {% if messages %}
+{% for message in messages %}
+   {{message}}
+{%  endfor%}
+{%  endif %}
+</h5>
+{% endblock %}

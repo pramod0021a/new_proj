@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="card mb-4 mt-4 w-50 m-auto">
+   <div class="card-header"><h4>Create An Account</h4></div>
+   <div class="card-body">
+     <form action="" method="POST" novalidate>
+       {% csrf_token %}
+    <!-- error message -->
+    {% if form.non_field_errors %}
+    {% for error in  form.non_field_errors %}
+    <p class="text-danger">{{error}}</p>
+    {% endfor %}
+    {% endif %}
+      {% for fm in form %}
+      {{fm.label_tag}}  {{fm }}  {{fm.errors|striptags}} <br><br>
+      {% endfor %}
+       <button type="submit" class="btn btn-primary">Create Account</button>
+     </form>
+   </div>
+ </div>
+ <!-- Message -->
+ {% if messages %}
+ {% for message in messages %}
+ <strong {%  if message.tags %} class="{{message.tags}} text-warning" {% endif %} > {{message}}</strong>
+ {%  endfor%}
+ {%  endif %}
+
+ 
+{% endblock %}
